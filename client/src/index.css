@@ -1,0 +1,542 @@
+/* client/src/index.css */
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color-scheme: dark;
+  --bg-main: #020617;
+  --bg-elevated: #020617;
+  --bg-card: rgba(15, 23, 42, 0.95);
+  --border-subtle: rgba(148, 163, 184, 0.22);
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.12);
+  --accent-strong: #4ade80;
+  --muted: #9ca3af;
+  --text-main: #e5e7eb;
+  --danger: #fb7185;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #0f172a, #020617 45%),
+    radial-gradient(circle at bottom right, #082f49, #020617 55%);
+  color: var(--text-main);
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.app-shell {
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 24px;
+  padding: 24px 24px 16px;
+  background: radial-gradient(circle at top left, #0f172a, #020617 40%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.9);
+}
+
+.app-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 0 0, #22c55e, #0f172a 55%);
+  color: #ecfdf5;
+  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+}
+
+.app-title {
+  font-size: 1.4rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.app-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.header-pill-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--muted);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.pill-soft {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.pill-recipe {
+  background: var(--accent-soft);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: var(--accent-strong);
+}
+
+.tiny-pill {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+}
+
+.pill-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+/* Layout */
+
+.app-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cards */
+
+.card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.card-helper {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Form elements */
+
+.ingredients-input,
+.coach-input,
+textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(75, 85, 99, 0.9);
+  background: rgba(15, 23, 42, 0.8);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  resize: vertical;
+  outline: none;
+}
+
+.ingredients-input:focus,
+.coach-input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
+}
+
+.options-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+select {
+  border-radius: 999px;
+  border: 1px solid rgba(75, 85, 99, 0.9);
+  background: rgba(15, 23, 42, 0.9);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+/* Buttons */
+
+.primary-btn {
+  margin-top: 12px;
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #022c22;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 35px rgba(34, 197, 94, 0.6);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.primary-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.secondary-btn {
+  background: rgba(15, 23, 42, 1);
+  color: var(--accent-strong);
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.6);
+  box-shadow: none;
+}
+
+/* Tiny note */
+
+.tiny-note {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* Coach card */
+
+.coach-card {
+  margin-top: 8px;
+}
+
+.coach-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.coach-title-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.coach-icon {
+  width: 28px;
+  height: 28px;
+  padding: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 0 0, #38bdf8, #0f172a 55%);
+  color: #e0f2fe;
+}
+
+.coach-chat {
+  border-radius: 14px;
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-bubble {
+  max-width: 100%;
+  padding: 7px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.chat-user {
+  margin-left: auto;
+  background: rgba(22, 163, 74, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.6);
+}
+
+.chat-bot {
+  margin-right: auto;
+  background: rgba(15, 23, 42, 1);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.coach-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.coach-input {
+  flex: 1;
+}
+
+/* Recipes section */
+
+.recipes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.recipes-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.empty-state {
+  padding: 16px 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(75, 85, 99, 0.85);
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.empty-state strong {
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.empty-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-strong);
+}
+
+.recipes-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recipe-card {
+  border-radius: 16px;
+  padding: 12px 12px 10px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.95);
+  cursor: pointer;
+  transition: border-color 0.09s ease, transform 0.09s ease,
+    box-shadow 0.09s ease, background 0.09s ease;
+}
+
+.recipe-card:hover {
+  border-color: rgba(148, 163, 184, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+}
+
+.recipe-selected {
+  border-color: rgba(34, 197, 94, 0.9);
+  box-shadow: 0 14px 32px rgba(34, 197, 94, 0.45);
+}
+
+.recipe-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.recipe-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.recipe-time {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.recipe-desc {
+  margin: 4px 0 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.recipe-nutrition {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.nutri-label {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.nutri-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+/* Steps */
+
+.steps-details {
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(51, 65, 85, 0.95);
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+
+.steps-details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.steps-details summary::marker,
+.steps-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.steps-details summary::after {
+  content: "▾";
+  font-size: 0.7rem;
+  margin-left: 6px;
+  color: var(--muted);
+}
+
+.steps-list {
+  margin: 6px 0 0 16px;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Footer */
+
+.app-footer {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 18px 16px 12px;
+  }
+
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+
+  .coach-chat {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-root {
+    padding: 12px;
+  }
+
+  .app-shell {
+    border-radius: 18px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .options-row {
+    flex-direction: column;
+  }
+
+  .coach-input-row {
+    flex-direction: column;
+  }
+
+  .primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
