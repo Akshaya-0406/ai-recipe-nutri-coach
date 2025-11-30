@@ -12,9 +12,17 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const API_BASE_URL =
+const RAW_API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
+// Safely join base + path (no //api and no missing slash)
+const joinUrl = (base, path) => {
+  const cleanBase = base.replace(/\/+$/, "");   // remove trailing slashes
+  const cleanPath = path.replace(/^\/+/, "");   // remove leading slashes
+  return `${cleanBase}/${cleanPath}`;
+};
+
+const API_BASE_URL = RAW_API_BASE_URL;
 
 function App() {
   // Core state
@@ -90,11 +98,14 @@ function App() {
       setRecipes([]);
       setSelectedRecipeId(null);
 
-      const res = await axios.post(`${API_BASE_URL}/api/recipes/generate`, {
-        ingredients,
-        goal,
-        diet,
-      });
+      const res = await axios.post(
+        joinUrl(API_BASE_URL, "/api/recipes/generate"),
+        {
+          ingredients,
+          goal,
+          diet,
+        }
+      );
 
       const newRecipes = res.data.recipes || [];
       setRecipes(newRecipes);
@@ -122,11 +133,14 @@ function App() {
     setCoachLoading(true);
 
     try {
-      const res = await axios.post(`${API_BASE_URL}/api/coach`, {
-        message: payloadText,
-        goal,
-        recipe: selectedRecipe || null,
-      });
+      const res = await axios.post(
+        joinUrl(API_BASE_URL, "/api/coach"),
+        {
+          message: payloadText,
+          goal,
+          recipe: selectedRecipe || null,
+        }
+      );
 
       const replyText =
         res.data?.reply ||
@@ -307,9 +321,7 @@ function App() {
                   <p className="tiny-note">
                     Using your profile: <strong>{profile.diet}</strong>, goal{" "}
                     <strong>{profile.goal.replaceAll("_", " ")}</strong>
-                    {profile.allergies
-                      ? `, avoid: ${profile.allergies}`
-                      : ""}
+                    {profile.allergies ? `, avoid: ${profile.allergies}` : ""}
                     .
                     <br />
                     Nutrition info is approximate and for learning only, not medical advice.
